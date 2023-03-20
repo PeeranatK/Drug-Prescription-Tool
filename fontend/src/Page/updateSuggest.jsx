@@ -112,7 +112,7 @@ export function UpdateSuggest() {
       
       //if (searchinput !== "") {
         //console.log("useeffect");
-        const response = await Axios.get(`http://localhost:3001/api/druglist`);
+        const response = await Axios.get(`https://drug-prescription-tool-api.vercel.app/api/druglist`);
         setOptions(response.data);
         //console.log(response);
       //}
@@ -128,7 +128,7 @@ export function UpdateSuggest() {
     
       //if (searchinput !== "") {
         //console.log("useeffect");
-        const response = await Axios.get(`http://localhost:3001/api/diseaselist`);
+        const response = await Axios.get(`https://drug-prescription-tool-api.vercel.app/api/diseaselist`);
         setOptions2(response.data);
         console.log(response);
       //}
@@ -181,7 +181,7 @@ export function UpdateSuggest() {
   
   async function fetchSuggestions3() {
     try {
-      const response = await Axios.post('http://localhost:3001/api/resultSuggest', {
+      const response = await Axios.post('https://drug-prescription-tool-api.vercel.app/api/resultSuggest', {
         'id': id,
       });
       console.log(response.data);
@@ -262,7 +262,7 @@ export function UpdateSuggest() {
     e.preventDefault();
     const searchDrug = document.getElementById('free-solo-2-demo').value;
     const text = textareaRef.current.value;
-    Axios.post('http://localhost:3001/api/updateSuggest', {
+    Axios.post('https://drug-prescription-tool-api.vercel.app/api/updateSuggest', {
       'dname' : searchDrug,
       'priority' :severityLevel,
       'method' :alignment,
@@ -337,7 +337,7 @@ export function UpdateSuggest() {
 
   function findSuggestion() {
     console.log("active");
-    Axios.post('http://localhost:3001/api/drugdisease', {
+    Axios.post('https://drug-prescription-tool-api.vercel.app/api/drugdisease', {
       'dname': formData.dname,
       'age': formData.age,
       'sex': formData.sex,

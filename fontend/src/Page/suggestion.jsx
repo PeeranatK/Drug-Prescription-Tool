@@ -55,7 +55,7 @@ const Suggestion = () => {
       
       //if (searchinput !== "") {
         //console.log("useeffect");
-        const response = await Axios.get(`http://localhost:3001/api/druglist`);
+        const response = await Axios.get(`https://drug-prescription-tool-api.vercel.app/api/druglist`);
         setOptions(response.data);
         //console.log(response);
       //}
@@ -71,7 +71,7 @@ const Suggestion = () => {
     
       //if (searchinput !== "") {
         //console.log("useeffect");
-        const response = await Axios.get(`http://localhost:3001/api/diseaselist`);
+        const response = await Axios.get(`https://drug-prescription-tool-api.vercel.app/api/diseaselist`);
         setOptions2(response.data);
         console.log(response);
       //}

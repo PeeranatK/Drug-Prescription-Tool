@@ -98,7 +98,7 @@ const Interaction = () => {
 
 
   function findInteraction(drug1,drug2,id1,id2) {
-    Axios.post('http://localhost:3001/api/interaction', {
+    Axios.post('https://drug-prescription-tool-api.vercel.app/api/interaction', {
       'drug1' : drug1,
       'drug2' : drug2
     }).then((respond) => {
@@ -133,7 +133,7 @@ const Interaction = () => {
       
       //if (searchinput !== "") {
         //console.log("useeffect");
-        const response = await Axios.get(`http://localhost:3001/api/druglist`);
+        const response = await Axios.get(`https://drug-prescription-tool-api.vercel.app/api/druglist`);
         setOptions(response.data);
         //console.log(response);
       //}

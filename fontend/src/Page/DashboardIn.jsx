@@ -44,7 +44,7 @@ export  function DashboardIn() {
       
       //if (searchinput !== "") {
         //console.log("useeffect");
-        const response = await Axios.get(`http://localhost:3001/api/druglist`);
+        const response = await Axios.get(`https://drug-prescription-tool-api.vercel.app/api/druglist`);
         setOptions(response.data);
         //console.log(response);
       //}
@@ -87,7 +87,7 @@ export  function DashboardIn() {
     setFormData({ ...formData, [name2]: value2 });
 
     console.log(formData);
-    Axios.post('http://localhost:3001/api/addInteract', {
+    Axios.post('https://drug-prescription-tool-api.vercel.app/api/addInteract', {
       'dname1' : formData.dname1,
       'dname2' : formData.dname2,
       'description' : textareaValue,
@@ -144,7 +144,7 @@ export  function DashboardIn() {
     }
 
     console.log(formData);
-    Axios.post('http://localhost:3001/api/updateInteract', {
+    Axios.post('https://drug-prescription-tool-api.vercel.app/api/updateInteract', {
       'dname1' : dname1,
       'dname2' : dname2,
       'description' : textareaValue,
@@ -184,7 +184,7 @@ export  function DashboardIn() {
     setFormData({ ...formData, [name]: value }); // update form data
   }
   const UsersGet = () => {
-    Axios.get("http://localhost:3001/api/topInteract")
+    Axios.get("https://drug-prescription-tool-api.vercel.app/api/topInteract")
       .then(response => {
         setUsers(response.data);
       })
@@ -195,7 +195,7 @@ export  function DashboardIn() {
 
   async function fetchSuggestions3(id) {
     try {
-      const response = await Axios.post('http://localhost:3001/api/resultInteract', {
+      const response = await Axios.post('https://drug-prescription-tool-api.vercel.app/api/resultInteract', {
         'id': id,
       });
       console.log(response.data);
@@ -218,7 +218,7 @@ export  function DashboardIn() {
   }
 
   const UserDelete = id => {
-    Axios.post('http://localhost:3001/api/deleteInteract', {
+    Axios.post('https://drug-prescription-tool-api.vercel.app/api/deleteInteract', {
       'rid' : id,
     }).then((respond) => {
       console.log(respond.data);

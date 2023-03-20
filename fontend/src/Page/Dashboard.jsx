@@ -29,7 +29,7 @@ export default function Dashboard() {
   }, [])
   
   const UsersGet = () => {
-    Axios.get("http://localhost:3001/api/topSuggest")
+    Axios.get("https://drug-prescription-tool-api.vercel.app/api/topSuggest")
       .then(response => {
         setUsers(response.data);
       })
@@ -46,7 +46,7 @@ export default function Dashboard() {
   }
 
   const UserDelete = id => {
-    Axios.post('http://localhost:3001/api/deleteSuggest', {
+    Axios.post('https://drug-prescription-tool-api.vercel.app/api/deleteSuggest', {
       'rid' : id,
     }).then((respond) => {
       console.log(respond.data);
