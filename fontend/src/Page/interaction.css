@@ -1,0 +1,81 @@
+
+  .input-group.md-form.form-sm.form-2 input.red-border  {
+    border: 1px solid #5F8D4E;
+  }
+
+  .input-group-text {
+    color: blue;
+  }
+
+  .result {
+    background-color: #C9C9C9;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+  }
+
+  .drug1, .drug2, .status, .describtion{
+    background-color: white;
+    margin-right: 30px;
+    margin-left: 30px;
+  }
+/* Drug interaction table */
+.drug-interaction-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.drug-interaction-table th,
+.drug-interaction-table td {
+  padding: 12px;
+  text-align: left;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+}
+
+.drug-interaction-table th {
+  background-color: #f2f2f2;
+}
+
+.drug-interaction-table .severity {
+  font-weight: bold;
+  color: #f0ad4e;
+}
+
+.drug-interaction-table .description {
+  font-style: italic;
+}
+
+.drug-interaction-table .interaction-type {
+  font-weight: bold;
+}
+
+.drug-interaction-table .drug-name {
+  font-weight: bold;
+}
+
+.drug-interaction-table .drug-dosage {
+  font-style: italic;
+}
+li {
+  display: inline;
+  margin-left: 5 px;
+}
+img {
+  width: 30px;
+   height: 40px;
+}
+.MINOR {
+  font-weight: bold;
+  color: #f0ad4e;
+}
+
+.MODERATE {
+  font-weight: bold;
+  color: #DC143C;
+}
+
+.MAJOR {
+  font-weight: bold;
+  color: #8B008B;
+}
