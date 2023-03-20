@@ -21,6 +21,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
 import { useEffect } from "react";
 import Navtop from '../Component/Navbar';
+import Col from 'react-bootstrap/Col';
 
 const Suggestion = () => {
   const [searchinput, setSearchinput] = useState('');
@@ -232,11 +233,11 @@ const Suggestion = () => {
             <br /><h6 className="text-left">Factor</h6>
           </div>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" as={Col} controlId="formBasicEmail">
             <Form.Label>Age (year)</Form.Label>
             <Form.Control type="text" placeholder="" name="age" value={formData.age} onChange={handleChange}/>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" as={Col} controlId="formBasicEmail">
             <Form.Label>Weight (Kg)</Form.Label>
             <Form.Control type="text" placeholder="" name="weight" value={formData.weight} onChange={handleChange}/>
           </Form.Group>
