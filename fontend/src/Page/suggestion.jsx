@@ -145,7 +145,7 @@ const Suggestion = () => {
 
   function findSuggestion() {
     console.log("active");
-    Axios.post('http://localhost:3001/api/drugdisease', {
+    Axios.post('https://drug-prescription-tool-api.vercel.app/api/drugdisease', {
       'dname': formData.dname,
       'age': formData.age,
       'sex': formData.sex,
