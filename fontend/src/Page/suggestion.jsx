@@ -22,6 +22,7 @@ import Stack from '@mui/material/Stack';
 import { useEffect } from "react";
 import Navtop from '../Component/Navbar';
 import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const Suggestion = () => {
   const [searchinput, setSearchinput] = useState('');
@@ -233,6 +234,7 @@ const Suggestion = () => {
             <br /><h6 className="text-left">Factor</h6>
           </div>
           </Form.Group>
+          <Row>
           <Form.Group className="mb-3" as={Col} controlId="formBasicEmail">
             <Form.Label>Age (year)</Form.Label>
             <Form.Control type="text" placeholder="" name="age" value={formData.age} onChange={handleChange}/>
@@ -241,6 +243,7 @@ const Suggestion = () => {
             <Form.Label>Weight (Kg)</Form.Label>
             <Form.Control type="text" placeholder="" name="weight" value={formData.weight} onChange={handleChange}/>
           </Form.Group>
+          </Row>
           <Form.Group className="mb-3" controlId="formGridState">
             <Form.Label>Sex</Form.Label>
             <Form.Select  name="sex" value={formData.sex} onChange={handleChange}>
