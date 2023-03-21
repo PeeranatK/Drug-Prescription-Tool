@@ -2749,6 +2749,7 @@ async function createRuleEngine(dname,factS) {
     const result = await engine.run(factS);
     //console.log("result : "+result);
     //const result = await engine.run({ ...facts, [fact]: true });
+
     if (result.events.length > 0) {
       const event = result.events[0];
       //console.log(event.params.message);
@@ -2843,16 +2844,39 @@ async function runEngine(dname) {
 
 
 app.post('/api/drugdisease', async (req, res)=>{
-  let fact = {
-    age: req.body.age,
-    sex: req.body.sex,
-    pregnancy: req.body.pregnancy.toString(), 
-    lactation: req.body.lactation.toString(),
-    kidney: req.body.kidney,
-    disease: req.body.disease,
-    weight: req.body.weight,
-    alwaysTrue: true.toString(),
+  req.body.age = req.body.age == "" ? null : req.body.age;
+  req.body.sex = req.body.sex == "" ? null : req.body.sex;
+  req.body.pregnancy = req.body.pregnancy == "" ? null : req.body.pregnancy;
+  req.body.lactation = req.body.lactation == "" ? null : req.body.lactation;
+  req.body.kidney = req.body.kidney == "" ? null : req.body.kidney;
+  req.body.disease = req.body.disease == "" ? null : req.body.disease;
+  req.body.weight = req.body.weight == "" ? null : req.body.weight;
+  if(req.body.pregnancy != null){
+    req.body.pregnancy = req.body.pregnancy.toString();
   }
+  if(req.body.lactation != null){
+    req.body.lactation = req.body.lactation.toString();
+  }
+  let fact = {
+      age: req.body.age,
+      sex: req.body.sex,
+      pregnancy: req.body.pregnancy, 
+      lactation: req.body.lactation,
+      kidney: req.body.kidney,
+      disease: req.body.disease,
+      weight: req.body.weight,
+      alwaysTrue: true.toString(),
+    }
+  // let fact = {
+  //   age: req.body.age,
+  //   sex: req.body.sex,
+  //   pregnancy: req.body.pregnancy.toString(), 
+  //   lactation: req.body.lactation.toString(),
+  //   kidney: req.body.kidney,
+  //   disease: req.body.disease,
+  //   weight: req.body.weight,
+  //   alwaysTrue: true.toString(),
+  // }
   //console.log(fact);
   const output = await createRuleEngine(req.body.dname,fact);
   //const output =  createRuleEngine(req.body.dname,fact); 
