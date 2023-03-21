@@ -2762,6 +2762,19 @@ async function createRuleEngine(dname,factS) {
   };
 
 
+  if(factS.disease == null){
+    for (const rule of sortedRules) {
+      //console.log(`Checking rule ${rule.rid}: ${rule.name}`);
+      // if (await executeRule(rule, diseaseFacts)) {
+      //   return;
+      // }
+      const message = await executeRule(rule, factS.disease);
+      if (message) {
+        //console.log("2480 : "+ message);
+        return message;
+      }
+    }
+  }else
   // Separate the disease array into two facts
   //const diseases = ['Heart failure','Diabetes'];
   if (factS.disease.length === 0) {
@@ -2845,8 +2858,7 @@ async function runEngine(dname) {
 
 app.post('/api/drugdisease', async (req, res)=>{
   
-  if(req.body){
-    req.body.age = req.body.age == "" ? null : req.body.age;
+  req.body.age = req.body.age == "" ? null : req.body.age;
   req.body.sex = req.body.sex == "" ? null : req.body.sex;
   req.body.pregnancy = req.body.pregnancy == "" ? null : req.body.pregnancy;
   req.body.lactation = req.body.lactation == "" ? null : req.body.lactation;
@@ -2858,8 +2870,6 @@ app.post('/api/drugdisease', async (req, res)=>{
   }
   if(req.body.lactation != null){
     req.body.lactation = req.body.lactation.toString();
-  }
-  
   }
   let fact = {
     age: req.body.age,
