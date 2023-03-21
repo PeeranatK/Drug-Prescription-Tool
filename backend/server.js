@@ -2859,16 +2859,17 @@ app.post('/api/drugdisease', async (req, res)=>{
   if(req.body.lactation != null){
     req.body.lactation = req.body.lactation.toString();
   }
+  
+  }
   let fact = {
-      age: req.body.age,
-      sex: req.body.sex,
-      pregnancy: req.body.pregnancy, 
-      lactation: req.body.lactation,
-      kidney: req.body.kidney,
-      disease: req.body.disease,
-      weight: req.body.weight,
-      alwaysTrue: true.toString(),
-    }
+    age: req.body.age,
+    sex: req.body.sex,
+    pregnancy: req.body.pregnancy, 
+    lactation: req.body.lactation,
+    kidney: req.body.kidney,
+    disease: req.body.disease,
+    weight: req.body.weight,
+    alwaysTrue: true.toString(),
   }
   // let fact = {
   //   age: req.body.age,
