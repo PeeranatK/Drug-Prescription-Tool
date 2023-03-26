@@ -1,6 +1,5 @@
 const client = require('./dbconnect.js')
 const express = require("express");
-const func1 = require("./interaction");
 const LTL = require('ltl');
 const { Engine } = require('json-rules-engine');
 
