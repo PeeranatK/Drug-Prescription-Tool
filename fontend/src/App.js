@@ -19,7 +19,6 @@ function App() {
             <Route path="/" exact element={<Interaction />}></Route>
             <Route path="/Suggestion" element={<Suggestion />}></Route>
             <Route path="/addSuggest" element={<AddSuggest />}></Route>
-            <Route path="/login" element={<Login />}></Route>
             <Route path="/Dashboard" element={<Dashboard />}></Route>
             <Route path="/DashboardInteraction" element={<DashboardIn />}></Route>
             <Route path="/updateSuggest/:id" exact element={<UpdateSuggest />}>
