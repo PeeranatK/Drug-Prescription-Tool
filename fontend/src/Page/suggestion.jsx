@@ -30,7 +30,6 @@ const Suggestion = () => {
   const [saveinput, setSaveinput] = useState([]);
   const [result, setResult] = useState([]);
   const [sresult, setsResult] = useState('');
-  //var index = 0;
   const [index, setIndex] = useState(0);
 
   const [formData, setFormData] = useState({
@@ -87,6 +86,7 @@ const Suggestion = () => {
   };
 
   const handleClose = () => {
+    setsResult('');
     setOpen(false);
   };
 
@@ -94,14 +94,6 @@ const Suggestion = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault(); // prevent default form submission
-    console.log(formData); // display form data in console
-    console.log(formData.dname.length);
-    //check sex
-    if(formData.sex == 'male'){
-      setFormData({ ...formData, pregnancy: false }); // update form data
-      setFormData({ ...formData, lactation: false }); // update form data
-    }
-    // handle form submission logic here
     findSuggestion();
   }
   
@@ -125,14 +117,7 @@ const Suggestion = () => {
   }
 
   const handleCheck = (event) => {
-    //setIsChecked(event.target.checked);
-    //console.log("check");
-    //console.log(event.target.checked);
-    //console.log(event.target.name);
-
-    //const { name, value } = event.target.checked;
     setFormData({ ...formData, [event.target.name]: event.target.checked });
-    // handle checkbox form logic here
   }
 
   
@@ -164,17 +149,6 @@ const Suggestion = () => {
     });
   }
 
-
-
-
-
-  //console.log(saveinput);
-  //findInteraction("Abacavir","Aceclofenac");
-
-  
-  //test();
-  //test2("Abacavir","Aceclofenac");
-
   return (
     <div>
       <Navtop />
@@ -183,30 +157,10 @@ const Suggestion = () => {
       <div>
         <br /><h1 className="text-center">Drug Suggestion</h1><br />
       </div>
-       {/*Input Field*/}
-       {/* 
-      <div className="input-group md-form form-sm form-2 pl-0">
-      
-        <input className="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search" onChange={handleChange} value={searchinput} onKeyPress={event => {
-                if (event.key === 'Enter') {
-                  if(searchinput !==  ""){
-                    startInput();
-                  }
-                }
-              }}/>
-        <div className="input-group-append">
-          <span className="input-group-text green lighten-3" id="basic-text1">
-            <MDBIcon icon="search" className="text-grey" />
-          </span>
-        </div>
-      </div>
-      */}
-      {/*Form*/}
+
       <MDBContainer>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="dname">
-            {/* <Form.Label>Drug name</Form.Label> */}
-            {/* <Form.Control type="text" placeholder="" name="dname" value={formData.dname} onChange={handleChange}/> */}
             <Stack spacing={2} sx={{ width: '100%' }} className="me-4">
               <Autocomplete
                 freeSolo
@@ -260,7 +214,6 @@ const Suggestion = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Underlying disease</Form.Label>
-            {/* <Form.Control type="text" placeholder="" name="disease" value={formData.disease} onChange={handleChange}/> */}
             <Stack spacing={2} sx={{ width: '100%' }} className="me-4">
               <Autocomplete
                 freeSolo
@@ -289,10 +242,6 @@ const Suggestion = () => {
             <Form.Label>Kidney function</Form.Label>
             <Form.Control type="text" placeholder="" name="kidney" value={formData.kidney} onChange={handleChange}/>
           </Form.Group>
-          
-          {/* <Button variant="primary" type="submit">
-            Submit
-          </Button> */}
           <div>
             <Button variant="outlined" onClick={handleClickOpen} type="submit">
               Submit

@@ -1,27 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Avatar from '@mui/material/Avatar';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import { Link } from "react-router-dom";
 import ButtonAppBar from '../Component/Nav';
 import Axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
 import { Select, MenuItem } from '@mui/material';
+import {sliceData, calculateRange} from './table-pagiation';
+import { TextField,TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, Button, Typography, Box, Link, ButtonGroup, Avatar, TableFooter, TablePagination } from "@mui/material";
 
 
 export  function DashboardIn() {
@@ -32,22 +19,26 @@ export  function DashboardIn() {
   const [searchinput2, setSearchinput2] = useState('');
   const [severityLevel, setseverityLevel] = useState('');
   const [ID, setID] = useState('');
-  const history = useNavigate();
+  const [page, setPage] = useState(1); // current page number
+  const [rowsPerPage, setRowsPerPage] = useState(10); // number of rows per page
+  const [searchText, setSearchText] = useState('');
+  const [original, setOriginal] = useState([]);
+  const handleSearch = (event) => {
+    const value = event.target.value.toLowerCase();
+    const filteredUsers = original.slice().filter(user => user.drug1.toLowerCase().includes(value) || user.drug2.toLowerCase().includes(value));
+    setUsers(filteredUsers);
+    setSearchText(value);
+    setPage(1);
+  }
   useEffect(() => {
     UsersGet()
-    //console.log(profile);
   }, [])
   const [options, setOptions] = useState([]);
   useEffect(() => {
     
     async function fetchSuggestions() {
-      
-      //if (searchinput !== "") {
-        //console.log("useeffect");
         const response = await Axios.get(`https://drug-prescription-tool-api.vercel.app/api/druglist`);
         setOptions(response.data);
-        //console.log(response);
-      //}
     }
   
     fetchSuggestions();
@@ -83,7 +74,6 @@ export  function DashboardIn() {
     const value1 = textareaValue;
     const value2 = severityLevel;
     console.log(textareaValue);
-    //setFormData({ ...formData, [name1]: value1 });
     setFormData({ ...formData, [name2]: value2 });
 
     console.log(formData);
@@ -96,7 +86,6 @@ export  function DashboardIn() {
       console.log(respond.data);
       setsResult(respond.data);
       setIsModalOpen(false);
-      //console.log(id);
       Swal.fire({
         icon: "success",
         title: "Success",
@@ -128,16 +117,15 @@ export  function DashboardIn() {
     const value1 = textareaValue;
     const value2 = severityLevel;
     console.log(textareaValue);
-    //setFormData({ ...formData, [name1]: value1 });
     setFormData({ ...formData, [name2]: value2 });
     var dname1,dname2;
-    if(formData.dname1 == ''){
+    if(formData.dname1 === ''){
         dname1 = searchinput;
     }else{
         dname1 = formData.dname1;
     }
 
-    if(formData.dname2 == ''){
+    if(formData.dname2 === ''){
         dname2 = searchinput;
     }else{
         dname2 = formData.dname2;
@@ -187,6 +175,7 @@ export  function DashboardIn() {
     Axios.get("https://drug-prescription-tool-api.vercel.app/api/topInteract")
       .then(response => {
         setUsers(response.data);
+        setOriginal(response.data);
       })
       .catch(error => {
         console.log(error);
@@ -252,6 +241,16 @@ export  function DashboardIn() {
               </Typography>
             </Box>
             <Box>
+              <TextField
+                label="Search"
+                variant="outlined"
+                value={searchText}
+                onChange={handleSearch}
+                fullWidth
+                margin="normal"
+              />
+            </Box>
+            <Box>
               <Button variant="contained" color="primary" onClick={handleAddButtonClick}>
                 Add
               </Button>
@@ -264,20 +263,14 @@ export  function DashboardIn() {
                   <TableCell align="right">ID</TableCell>
                   <TableCell align="center">Drug Name</TableCell>
                   <TableCell align="left">Drug Name</TableCell>
-                  {/* <TableCell align="left">Last</TableCell> */}
                   <TableCell align="center">Severity level</TableCell>
                   <TableCell align="center">Modification</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {users.map((user) => (
+                {sliceData(users, page, rowsPerPage).map((user) => (
                   <TableRow key={user.ddi_id}>
                     <TableCell align="right">{user.ddi_id}</TableCell>
-                    {/* <TableCell align="center">
-                      <Box display="flex" justifyContent="center">
-                        <Avatar src={user.avatar} />
-                      </Box>
-                    </TableCell> */}
                     <TableCell align="center">{user.drug1}</TableCell>
                     <TableCell align="left">{user.drug2}</TableCell>
                     <TableCell align="center">{user.level}</TableCell>
@@ -290,6 +283,21 @@ export  function DashboardIn() {
                   </TableRow>
                 ))}
               </TableBody>
+              <TableFooter>
+                  <TableRow>
+                    <TablePagination
+                      rowsPerPageOptions={[5, 10, 25, 50]}
+                      count={users.length}
+                      rowsPerPage={rowsPerPage}
+                      page={page - 1}
+                      onPageChange={(event, newPage) => setPage(newPage + 1)}
+                      onRowsPerPageChange={(event) => {
+                        setRowsPerPage(parseInt(event.target.value, 10));
+                        setPage(1);
+                      }}
+                    />
+                  </TableRow>
+              </TableFooter>
             </Table>
           </TableContainer>
         </Paper>
@@ -304,53 +312,6 @@ export  function DashboardIn() {
           <Typography id="add-interaction-modal-title" variant="h6" component="h2" gutterBottom>
             Add Interaction
           </Typography>
-          {/* Add your form elements here */}
-          {/* <Stack spacing={2} sx={{ width: 400 }} className="me-4">
-            <Autocomplete
-                    freeSolo
-                    id="free-solo-2-demo"
-                    disableClearable
-                    options={options.map((option) => option.name)}
-                    getOptionLabel={(option) => option.toString()}
-                    value={searchinput}
-                    onChange={handleChangeDrug1}
-                    renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        label="Search Drug"
-                        InputProps={{
-                        ...params.InputProps,
-                        type: 'search',
-                        
-                        }}
-                        value= {searchinput}
-                    />
-                    )}
-                />
-            </Stack>
-            <Stack spacing={2} sx={{ width: 400 }} className="me-4">
-            <Autocomplete
-                    freeSolo
-                    id="free-solo-2-demo"
-                    disableClearable
-                    options={options.map((option) => option.name)}
-                    getOptionLabel={(option) => option.toString()}
-                    value={searchinput2}
-                    onChange={handleChangeDrug2}
-                    renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        label="Search Drug"
-                        InputProps={{
-                        ...params.InputProps,
-                        type: 'search',
-                        
-                        }}
-                        value= {searchinput2}
-                    />
-                    )}
-                />
-            </Stack> */}
             <Stack direction="row" spacing={2} sx={{ width: 800 }} className="me-4">
                 <Autocomplete
                     freeSolo

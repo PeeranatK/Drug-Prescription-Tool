@@ -8,24 +8,14 @@ import Axios from 'axios';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import Form from 'react-bootstrap/Form';
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Swal from 'sweetalert2';
-import { Typeahead } from 'react-bootstrap-typeahead';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { createTheme } from '@mui/material/styles';
-import { ThemeProvider } from '@mui/material/styles';
 import { useEffect } from "react";
 import ButtonAppBar from '../Component/Nav';
 import { useParams } from 'react-router-dom';
@@ -36,10 +26,8 @@ export function UpdateSuggest() {
   const [saveinput, setSaveinput] = useState([]);
   const [result, setResult] = useState([]);
   const [sresult, setsResult] = useState('');
-  //var index = 0;
   const [index, setIndex] = useState(0);
   const { id } = useParams();
-  //console.log("rid" + id);
   
 
   const pregnancyValues = ["true", "false"];
@@ -66,14 +54,11 @@ export function UpdateSuggest() {
   const [nextId, setNextId] = useState(2);
 
   const handleAddRow = () => {
-    // setRows([...rows, { id: nextId, col1: '', col2: '', col3: '' }]);
-    // setNextId(nextId + 1);
     const newRow = { id: rows.length + 1, col1: '', col2: '', col3: '' };
     setRows([...rows, newRow]);
   };
 
   const handleDeleteRow = (id) => {
-    //setRows(rows.filter((row) => row.id !== id));
     const newRows = rows.filter((row) => row.id !== id);
     setRows(newRows);
   };
@@ -109,13 +94,8 @@ export function UpdateSuggest() {
   useEffect(() => {
     
     async function fetchSuggestions() {
-      
-      //if (searchinput !== "") {
-        //console.log("useeffect");
         const response = await Axios.get(`https://drug-prescription-tool-api.vercel.app/api/druglist`);
         setOptions(response.data);
-        //console.log(response);
-      //}
     }
   
     fetchSuggestions();
@@ -125,59 +105,15 @@ export function UpdateSuggest() {
   useEffect(() => {
     
     async function fetchSuggestions2() {
-    
-      //if (searchinput !== "") {
-        //console.log("useeffect");
         const response = await Axios.get(`https://drug-prescription-tool-api.vercel.app/api/diseaselist`);
         setOptions2(response.data);
         console.log(response);
-      //}
     }
   
     fetchSuggestions2();
   }, [searchinput2]);
   const [count, setCount] = useState(true);
-//   useEffect(() => {
-//     if(count == true){
-//         console.log()
-//         async function fetchSuggestions3() {
-//             Axios.post('http://localhost:3001/resultSuggest', {
-//           'id' : id,
-//         }).then((respond) => {
-//           console.log(respond.data);
-//           setSearchinput(respond.data[0].name);
-//           setSeverityLevel(respond.data[0].priority);
-//           setAlignment(respond.data[0].method);
-//           setTextareaValue(respond.data[0].description);
-//           var i = 1;
-          
-//             setRows([]);
-//           respond.data.forEach(item => {
-//             const newRow = { id: i, col1: item.fact, col2: item.operator, col3: item.value };
-//             setRows([...rows, newRow]);
-            
-//             console.log(i+" : "+newRow);
-//             i = i+1;
-//           });
-         
-//         }).catch((error) => {
-//           console.error(error);
-          
-//         });
-//           }
-        
-//           fetchSuggestions3();
-//           setCount(false);
-//     }
-    
-//   },[rows]);
-  
 
-  //handleComing();
-  
-  const addNewRow = (newRow) => {
-    setRows_d(prevRows => [...prevRows, newRow]);
-  };
   
   async function fetchSuggestions3() {
     try {
@@ -193,21 +129,9 @@ export function UpdateSuggest() {
   
       const newRows = [];
       response.data.forEach((item, i) => {
-        //  if(item.fact == 'disease'){
-
-        //  }else{
-        //     newRows.push({ id: i + 1, col1: item.fact, col2: item.operator, col3: item.value });
-        // }
         newRows.push({ id: i + 1, col1: item.fact, col2: item.operator, col3: item.value });
         if(item.fact == 'disease'){
             setSearchinput2(item.value);
-            // const newRow2 = { id: rows_d.length + 1, disease: item.value };
-            // console.log(newRow2);
-            
-            // //setRows_d([...rows_d, newRow2]);
-            // addNewRow(newRow2);
-            // //setRows_d(rows_d.concat(newRow2));
-            // console.log(rows_d);
         }
       });
       
@@ -238,26 +162,6 @@ export function UpdateSuggest() {
   const handleTextareaChange = (event) => {
     setTextareaValue(event.target.value);
   };
-
-
-  // const handleSubmit = (event) => {
-  //   const searchDrug = document.getElementById('free-solo-2-demo').value;
-  //   console.log('Search Drug:', searchDrug);
-  //   console.log('Severity:', severityLevel);
-  //   console.log('Condition:', alignment);
-  //   console.log('textarea : '+textareaRef.current.value);
-  //   console.log('Rows:', rows);
-  //   // event.preventDefault(); // prevent default form submission
-  //   // console.log(formData); // display form data in console
-  //   // console.log(formData.dname.length);
-  //   // //check sex
-  //   // if(formData.sex == 'male'){
-  //   //   setFormData({ ...formData, pregnancy: false }); // update form data
-  //   //   setFormData({ ...formData, lactation: false }); // update form data
-  //   // }
-  //   // // handle form submission logic here
-  //   // //findSuggestion();
-  // }
   const handleSubmit = async (e) => {
     e.preventDefault();
     const searchDrug = document.getElementById('free-solo-2-demo').value;
@@ -301,58 +205,6 @@ export function UpdateSuggest() {
   const handleChangeToggle = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
-  
-  
-  
-
-
-  
-  const handleChangeSeverity = (event) => {
-    const { value } = event.target;
-    if (/^\d*$/.test(value)) {
-      setFormData({ ...formData, age: value });
-    }
-  };
-
-  const handleCheck = (event) => {
-    //setIsChecked(event.target.checked);
-    //console.log("check");
-    //console.log(event.target.checked);
-    //console.log(event.target.name);
-
-    //const { name, value } = event.target.checked;
-    setFormData({ ...formData, [event.target.name]: event.target.checked });
-    // handle checkbox form logic here
-  }
-
-  
-
-  
-
-
-
-
-
-
-
-  function findSuggestion() {
-    console.log("active");
-    Axios.post('https://drug-prescription-tool-api.vercel.app/api/drugdisease', {
-      'dname': formData.dname,
-      'age': formData.age,
-      'sex': formData.sex,
-      'pregnancy': formData.pregnancy,
-      'lactation': formData.lactation,
-      'disease': formData.disease,
-      'kidney': formData.kidney,
-      'weight': formData.weight,
-    }).then((respond) => {
-      console.log(respond.data);
-      setsResult(respond.data);
-    }).catch((error) => {
-      console.error(error);
-    });
-  }
 
 
   return (
@@ -362,7 +214,6 @@ export function UpdateSuggest() {
       <div>
         <br /><h1 className="text-center">Add Suggestion</h1><br />
       </div>
-      {/* <div className="d-flex justify-content-between"> */}
       <div className="d-flex align-items-center">
         <Stack spacing={2} sx={{ width: 400 }} className="me-4">
         <Autocomplete
@@ -442,7 +293,7 @@ export function UpdateSuggest() {
                   <option value="weight">Weight</option>
                   <option value="sex">Sex</option>
                   <option value="pregnancy">Pregnancy</option>
-                  <option value="lactation ">Lactation</option>
+                  <option value="lactation">Lactation</option>
                   <option value="disease">Underlying disease</option>
                   <option value="kidney">Kidney function</option>
                 </Form.Select>
@@ -504,11 +355,6 @@ export function UpdateSuggest() {
                     getOptionLabel={(option) => option.toString()}
                     value={searchinput2}
                     onChange={handleChangeDisease}
-                    // onChange={(event, newValue) => {
-                    //   const updatedRows = [...rows_d];
-                    //   updatedRows[event.target.id - 1].disease = newValue;
-                    //   setRows_d(updatedRows);
-                    // }}
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -519,7 +365,6 @@ export function UpdateSuggest() {
                           
                         }}
                         value= {searchinput2}
-                        //value= {rows_d.map((row) => row.disease).join(', ')}
                       />
                     )}
                   />
@@ -569,4 +414,3 @@ export function UpdateSuggest() {
   );
 }
 
-//export default UpdateSuggest;
