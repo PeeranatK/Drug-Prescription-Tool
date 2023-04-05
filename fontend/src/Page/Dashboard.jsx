@@ -5,7 +5,8 @@ import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import {sliceData, calculateRange} from './table-pagiation';
-import { TextField,TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, Button, Typography, Box, Link, ButtonGroup, Avatar, TableFooter, TablePagination } from "@mui/material";
+import { Link } from "react-router-dom";
+import { TextField,TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, Button, Typography, Box, ButtonGroup, Avatar, TableFooter, TablePagination } from "@mui/material";
 
 
 export default function Dashboard() {
