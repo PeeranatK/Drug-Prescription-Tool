@@ -1,0 +1,10 @@
+rid,name,description,method,priority
+1,Etoricoxib,Contraindicated,any,1
+2,Etoricoxib,Used with caution,any,2
+3,Etoricoxib,Dosing : 30-120 mg Once Daily,all,3
+4,Rivaroxaban,Contraindicated,any,1
+5,Rivaroxaban,Used with caution,all,2
+6,Rivaroxaban,Dosing : 10-20 mg Once Daily,any,3
+7,Rivaroxaban,Dosing : 15 mg once daily with food,any,4
+8,Rivaroxaban,Avoiding use in patients,any,5
+9,Rivaroxaban,Dosing : 10-20 mg Once Daily,any,6

@@ -1,0 +1,50 @@
+cid,rule_id,fact,operator,value
+3,1,pregnancy,equal,TRUE
+4,1,lactation,equal,TRUE
+5,1,disease,in,"{Heart failure,Ischemic heart disease,Peripheral artery disease,Cerebrovascular disease}"
+6,1,age,lessThan,15
+7,1,kidney,lessThan,30
+8,2,kidney,greaterThanInclusive,30
+9,2,disease,in,"{Asthma,Diabetes}"
+10,2,sex,equal,female
+11,3,alwaysTrue,equal,TRUE
+12,4,disease,in,{active pathological bleeding}
+13,4,age,lessThan,18
+14,5,disease,in,{Valvular disease}
+15,6,kidney,greaterThan,50
+16,7,kidney,greaterThan,14
+17,8,kidney,greaterThan,0
+18,9,alwaysTrue,equal,TRUE
+19,10,pregnancy,equal,TRUE
+20,10,lactation,equal,TRUE
+21,10,age,lessThan,10
+22,11,disease,in,{Stroke}
+23,11,kidney,equal,Dialysis
+24,12,age,lessThan,20
+25,13,alwaysTrue,equal,TRUE
+26,14,disease,in,{Hyperbilirubinemic neonates}
+27,15,disease,in,{Gallbladder pseudolithiasis}
+28,16,disease,in,{Gastrointestinal disease}
+29,17,age,greaterThan,17
+30,18,age,lessThan,18
+31,19,alwaysTrue,equal,TRUE
+32,20,age,lessThan,18
+33,20,age,greaterThan,5
+34,21,age,lessThan,18
+35,21,age,greaterThanInclusive,2
+36,22,age,lessThan,18
+37,22,age,greaterThanInclusive,1
+38,23,age,lessThan,18
+39,23,age,lessThan,1
+40,24,age,greaterThan,17
+41,25,kidney,greaterThan,50
+42,26,kidney,lessThanInclusive,50
+43,27,kidney,equal,Intermittent hemodialysis
+44,28,kidney,equal,Peritoneal dialysis
+45,29,alwaysTrue,equal,TRUE
+46,30,disease,in,{Active pathological bleeding}
+47,31,disease,in,{Lacunar stroke}
+48,32,pregnancy,equal,TRUE
+49,33,lactation,equal,TRUE
+50,34,age,greaterThan,17
+51,35,alwaysTrue,equal,TRUE

@@ -1,0 +1,17 @@
+cid,rule_id,fact,operator,value
+3,1,pregnancy,equal,true
+4,1,lactation,equal,true
+5,1,disease,in,"{Heart failure,Ischemic heart disease,Peripheral artery disease,Cerebrovascular disease}"
+6,1,age,lessThan,15
+7,1,kidney,lessThan,30
+8,2,kidney,greaterThanInclusive,30
+9,2,disease,in,"{Asthma,Diabetes}"
+10,2,sex,equal,female
+11,3,alwaysTrue,equal,true
+12,4,disease,in,{active pathological bleeding}
+13,4,age,lessThan,18
+14,5,disease,in,{Valvular disease}
+15,6,kidney,greaterThan,50
+16,7,kidney,greaterThan,14
+17,8,kidney,greaterThan,0
+18,9,alwaysTrue,equal,true

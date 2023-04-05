@@ -1,0 +1,6 @@
+ddi_id,drug1,drug2,description,level
+1,Abacavir,Aceclofenac,Aceclofenac may decrease the excretion rate of Abacavir which could result in a higher serum level.,MINOR
+2,Abacavir,Acemetacin,Acemetacin may decrease the excretion rate of Abacavir which could result in a higher serum level.,MINOR
+3,Abacavir,Acetaminophen,Acetaminophen may decrease the excretion rate of Abacavir which could result in a higher serum level.,MINOR
+4,Abacavir,Acetazolamide,Acetazolamide may increase the excretion rate of Abacavir which could result in a lower serum level and potentially a reduction in efficacy.,MODERATE
+5,Abacavir,Acetylsalicylic acid,Acetylsalicylic acid may decrease the excretion rate of Abacavir which could result in a higher serum level.,MINOR

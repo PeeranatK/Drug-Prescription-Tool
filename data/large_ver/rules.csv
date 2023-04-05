@@ -1,0 +1,36 @@
+rid,name,description,method,priority
+1,Etoricoxib,Contraindicated,any,1
+2,Etoricoxib,Used with caution,any,2
+3,Etoricoxib,Dosing : 30-120 mg Once Daily,all,3
+4,Rivaroxaban,Contraindicated,any,1
+5,Rivaroxaban,Used with caution,all,2
+6,Rivaroxaban,Dosing : 10-20 mg Once Daily,any,3
+7,Rivaroxaban,Dosing : 15 mg once daily with food,any,4
+8,Rivaroxaban,Avoiding use in patients,any,5
+9,Rivaroxaban,Dosing : 10-20 mg Once Daily,any,6
+10,Atorvastatin,Contraindicated,any,1
+11,Atorvastatin,"Due to the high protein binding, atorvastatin is not expected to be cleared by dialysis",any,2
+12,Atorvastatin,Dosing : 10-20 mg Once Daily,all,3
+13,Atorvastatin,Dosing : 10-80 mg Once Daily,all,4
+14,Ceftriaxone,Contraindicated,all,1
+15,Ceftriaxone,"Use with caution : Abnormal gallbladder sonograms have been reported, possibly due to ceftriaxone-calcium precipitates",all,2
+16,Ceftriaxone,"Use with caution in patients with a history of GI disease, especially colitis",all,3
+17,Ceftriaxone,Dosing 1-2 g every 12-24 hr,all,4
+18,Ceftriaxone,"Dosing : 50 to 100 mg/kg/day in 1 to 2 divided doses every 12 to 24 hours (maximum: 2,000 mg daily)",all,5
+19,Ceftriaxone,Dosing : 250/500/1000 mg,all,6
+20,Cetirizine,Dosing : 5 to 10 mg once daily,all,1
+21,Cetirizine,Dosing : Initial 2.5 mg once daily; may be increased to a maximum dose of 2.5 mg every 12 hours or 5 mg once daily,all,2
+22,Cetirizine,Dosing : 2.5 mg once daily; may increase to a maximum dose of 2.5 mg every 12 hours if needed,all,3
+23,Cetirizine,Dosing : 2.5 mg once daily,all,4
+24,Cetirizine,Dosing : 5 to 10 mg once daily,all,5
+25,Cetirizine,Dosing : 5 to 10 mg once daily,all,6
+26,Cetirizine,Dosing : 5 mg once daily,all,7
+27,Cetirizine,Dosing : 5 mg once daily; 5 mg 3 times per week may also be effective.,all,8
+28,Cetirizine,Dosing : 5 mg once daily,all,9
+29,Cetirizine,Dosing : 5 to 10 mg once daily,all,10
+30,Clopidogrel,Contraindicated,all,1
+31,Clopidogrel,Use with caution,all,2
+32,Clopidogrel,Use only when strictly needed and for the shortest duration possible,all,3
+33,Clopidogrel,"Should consider the risk of infant exposure, the benefits of breastfeeding to the infant, and benefits of treatment to the mother.",all,4
+34,Clopidogrel,"Dosing : Loading 300-600 mg , Maintainance 75-150 mg",all,5
+35,Clopidogrel,Dosing : 75 mg,all,6
